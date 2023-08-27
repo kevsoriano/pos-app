@@ -1,0 +1,16 @@
+<div class="header">
+    <div class="hamburger" [class.open]="open" (click)="open=!open">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="brand">
+      <a routerLink="/">
+        <img class="logo" src="../assets/icons/logo.png" alt="logo">
+        <h3>Company</h3>
+      </a>
+    </div>
+    <ul class="nav-links-top">
+      <li class="nav-links-top-item" [routerLink]="['/users']">Users</li>
+      <li class="nav-links-top-item" *ngIf="!isAuthenticated"><a routerLink="account/login">Login/Register</a></li>
+      <!-- <li class="nav-links-top-item" *ngIf="isAuthenticated" (click)="onLogout()"><a routerLink="auth">Logout</a></li> -->
+    </ul>
+</div>

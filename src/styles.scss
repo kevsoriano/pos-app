@@ -1,1 +1,142 @@
 /* You can add global styles to this file, and also import other style files */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    color: #444;
+    // background: #eee;
+}
+
+li,a,button {
+    text-decoration: none;
+    cursor: pointer;
+    color: black;
+    font-weight:400;
+    font-size: 14px;
+}
+
+li {
+    list-style: none;
+}
+
+.container {
+    margin-top: 25px;
+    padding: 0 25px;
+}
+
+// forms 
+.form {
+    border: 1px solid black;
+    padding: 16px;
+
+    .form-group {
+        display: flex; 
+        flex-direction: column;
+        max-width: 210px;
+
+        .form-control {
+            margin: 4px 0 12px 0;
+        }
+    }
+}
+
+input {
+    width: 100%;
+    height: 36px;
+    border-radius: 4px;
+    padding-left: 12px;
+    font-size: 14px;
+    font-weight: normal;
+    border: 1px solid rgb(137, 151, 155);
+    transition: border-color 150ms ease-in-out 0s;
+    outline: none;
+    color: rgb(33, 49, 60);
+    background-color: rgb(255, 255, 255);
+    padding-right: 12px;
+
+    &:hover, &:focus {
+        box-shadow: rgb(231 238 236) 0px 0px 0px 3px;
+    }
+}
+
+// buttons
+
+.btn {
+  align-items: center;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  color: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 2rem;
+  padding: calc(.75rem - 1px) calc(1.2rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+
+  &:hover, &:focus {
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+    color: rgba(0, 0, 0, 0.65);
+  }
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+    color: rgba(0, 0, 0, 0.65);
+    transform: translateY(0);
+  }
+}
+
+// e.g. submit
+.btn-primary {
+    background-color: #4681f4;
+    color: white;
+
+    &:hover, &:focus, &:active {
+        color: white;
+    }
+}
+
+// e.g. back
+.btn-secondary {
+    background-color: #9FA6B2;
+    color: white;
+
+    &:hover, &:focus, &:active {
+        color: white;
+    }
+}
+
+// e.g. delete
+.btn-danger {
+    background-color: #ED0800;
+    color: white;
+
+    &:hover, &:focus, &:active {
+        color: white;
+    }
+}

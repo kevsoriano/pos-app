@@ -1,0 +1,84 @@
+<div class="container">
+    <p>register works!</p>
+
+    <div class="form">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="firstName">First name</label>
+                <input type="text" name="firstName" id="firstName" formControlName="firstName" class="form-control">
+                <span></span>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last name</label>
+                <input type="text" name="lastName" id="lastName" formControlName="lastName" class="form-control">
+                <span></span>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" name="email" id="email" formControlName="email" class="form-control">
+                <span></span>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" formControlName="password" class="form-control">
+                <span></span>
+            </div>
+            <div formArrayName="addresses">
+                <h4>Addresses</h4>
+                <button class="btn btn-default" (click)="onAddAddress()">Add Address</button>
+                <div *ngFor="let address of addresses;let i = index">
+                    <div [formGroupName]="i">
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input type="text" class="form-control" formControlName="city">
+                        </div>
+                        <div class="form-group">
+                            <label for="country">Country</label>
+                            <input type="text" class="form-control" formControlName="country">
+                        </div>
+                        <div class="form-group">
+                            <label for="streetName">Street</label>
+                            <input type="text" class="form-control" formControlName="streetName">
+                        </div>
+                        <div class="form-group">
+                            <label for="postalCode">Postal code</label>
+                            <input type="text" class="form-control" formControlName="postalCode">
+                        </div>
+                        <div class="form-group">
+                            <label for="type">Type</label>
+                            <input type="text" class="form-control" formControlName="type">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div formArrayName="roles">
+                <h4>Roles</h4>
+                <button class="btn btn-default" (click)="onAddRole()">Add Role</button>
+                <div *ngFor="let role of roles;let i = index">
+                    <div [formGroupName]="i">
+                        <div class="form-group">
+                            <label for="name">Role name</label>
+                            <input type="text" class="form-control" formControlName="name">
+                        </div>
+                        <div formArrayName="authorities">
+                            <h4>Authorities</h4>
+                            <button class="btn btn-default" (click)="onAddAuthority(i)">Add Authority</button>
+                            <div *ngFor="let authority of getAuthorities(i);let j = index">
+                                <div [formGroupName]="j">
+                                    <div class="form-group">
+                                        <label for="name">Authority name</label>
+                                        <input type="text" class="form-control" formControlName="name">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Register</button> | 
+                <button type="button" class="btn btn-secondary" (click)="onLoginBtnClicked()">Login</button>
+            </div>
+        </form>
+    </div>
+</div>
