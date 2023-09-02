@@ -11,11 +11,11 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  auth_endpoint = 'http://localhost:8082/users';
-  user = new BehaviorSubject<User|null>(null);
+  users_endpoint = 'http://localhost:8082/users';
+  user = new BehaviorSubject<string|null>(null);
 
   register(userData: User) {
-    return this.http.post<User>(this.auth_endpoint,
+    return this.http.post<User>(this.users_endpoint,
       {
         firstName: userData.firstName, 
         lastName: userData.lastName, 
@@ -33,12 +33,32 @@ export class AuthService {
   }
 
   login(userData: {email: string, password: string}) {
-    return this.http.post(this.auth_endpoint,
+    return this.http.post('http://localhost:8082/login',
       {
         email: userData.email,
         password: userData.password
-      }
+      }, {observe: 'response'}
+    ).pipe(
+      tap(resData => {
+        this.handleAuth(resData.headers.get("token"), resData.headers.get("userId")
+      )})
     );
   }
 
+  logout() {
+    this.user.next(null);
+    localStorage.removeItem('token');
+    this.router.navigate(['/account/login']);
+  }
+
+  handleAuth(token: string | null, userId: string | null) {
+    console.log(token, userId);
+    localStorage.setItem('token', JSON.stringify(token));
+    this.user.next(token);
+  }
+
+  autoLogin() {
+    const token = JSON.parse(localStorage.getItem('token') as string);
+    this.user.next(token);
+  }
 }

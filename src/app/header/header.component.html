@@ -11,6 +11,6 @@
     <ul class="nav-links-top">
       <li class="nav-links-top-item" [routerLink]="['/users']">Users</li>
       <li class="nav-links-top-item" *ngIf="!isAuthenticated"><a routerLink="account/login">Login/Register</a></li>
-      <!-- <li class="nav-links-top-item" *ngIf="isAuthenticated" (click)="onLogout()"><a routerLink="auth">Logout</a></li> -->
+      <li class="nav-links-top-item" *ngIf="isAuthenticated" (click)="onLogout()"><a routerLink="auth">Logout</a></li>
     </ul>
 </div>

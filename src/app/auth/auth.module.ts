@@ -8,6 +8,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { SharedModule } from '../shared/shared.module';
 import { LayoutComponent } from './layout/layout.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -21,7 +22,7 @@ import { LayoutComponent } from './layout/layout.component';
   imports: [
     CommonModule,
     AuthRoutingModule,
-    SharedModule
+    ReactiveFormsModule
   ]
 })
 export class AuthModule { }

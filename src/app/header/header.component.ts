@@ -26,7 +26,7 @@ export class HeaderComponent {
     throw new Error('Method not implemented.');
   }
 
-  // onLogout() {
-  //   this.authService.logout();
-  // }
+  onLogout() {
+    this.authService.logout();
+  }
 }
