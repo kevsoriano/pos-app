@@ -1,0 +1,12 @@
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li class="page-item"><a class="page-link" (click)="onPrevPage()">Previous</a></li>
+      <li class="page-item"><a class="page-link" (click)="onChangePage(1)">1</a></li>
+      <li class="page-item"><a class="page-link" (click)="onChangePage(2)">2</a></li>
+      <li class="page-item"><a class="page-link" (click)="onChangePage(3)">3</a></li>
+      <li class="page-item"><a class="page-link" (click)="onNextPage()">Next</a></li>
+    </ul>
+    <select [(ngModel)]="currentPageSize" (change)="onChangePageSize()">
+        <option *ngFor="let size of pageSizes" [ngValue]="size">{{size}}</option>
+    </select>
+</nav>

@@ -18,6 +18,34 @@
         </form>
     </div>
     <div class="table">
-
+        <table>
+            <thead>
+                <tr class="center-align">
+                    <!-- <th></th> -->
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>Email</th>
+                    <!-- <th>Address</th> -->
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of userList">
+                    <td class="left-align">{{ user.firstName }}</td>
+                    <td class="left-align">{{ user.lastName }}</td>
+                    <td class="left-align">{{ user.email }}</td>
+                    <!-- <td>{{ user.addresses[1].city }}</td> -->
+                    <td class="center-align">
+                        <a>View</a>
+                        <a>Edit</a>
+                        <button type="button">delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <app-pagination 
+            [totalPages]="totalPages" 
+            (pageChanged)="onPageChanged($event)" 
+            (pageSizeChanged)="onPageSizeChanged($event)"></app-pagination>
     </div>
 </div>
