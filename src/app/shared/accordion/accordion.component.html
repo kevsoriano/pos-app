@@ -1,0 +1,11 @@
+<div class="accordion">
+    <ng-container *ngFor="let item of items; let i = index">
+        <div class="title" (click)="toggleAccordion(i)">
+            <i class="dropdown"></i>
+            {{ item.title }}
+        </div>
+        <div class="content" [ngClass]="{ active: i === openedItemIndex }">
+            <p>{{ item.content }}</p>
+        </div>
+    </ng-container>
+</div>

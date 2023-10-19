@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 import { PaginationComponent } from './pagination/pagination.component';
 import { FormsModule } from '@angular/forms';
 import { ModalComponent } from './modal/modal.component';
+import { AccordionComponent } from './accordion/accordion.component';
 
 
 
 @NgModule({
   declarations: [
     PaginationComponent,
-    ModalComponent
+    ModalComponent,
+    AccordionComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +19,8 @@ import { ModalComponent } from './modal/modal.component';
   ],
   exports: [
     PaginationComponent,
-    ModalComponent
+    ModalComponent,
+    AccordionComponent
   ]
 })
 export class SharedModule { }

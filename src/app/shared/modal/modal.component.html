@@ -1,15 +1,18 @@
-<div>
-    <div class="modal">
-        <i class="close icon"></i>
+<div class="modal" (click)="onCloseModal()">
+    <div (click)="$event.stopPropagation()">
+        <i class="close icon" (click)="onCloseModal()"></i>
         <div class="modal-content">
             <div class="header">
-                MODAL!
+                <ng-content select="[modalTitle]"></ng-content>
             </div>
-            <div class="content">
-                <p>Some content</p>
+            <div class="body">
+                <ng-content></ng-content>
             </div>
             <div class="actions">
-                <button class="ui button">OK</button>
+                <ng-content select="[modalFooter]"></ng-content>
+            </div>
+            <div class="actions actions-default">
+                <button class="button" (click)="onCloseModal()">OK</button>
             </div>
         </div>
     </div>
