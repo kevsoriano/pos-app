@@ -21,4 +21,16 @@ export class UserService {
       params: queryParams 
     })
   }
+
+  createUser(userDetails: User) {
+    return this.http.post(this.users_endpoint, userDetails);
+  }
+
+  updateUser(userId: number, userDetails: User) {
+    return this.http.put('${this.users_endpoint}/${userId}', userDetails);
+  }
+
+  deleteUser(userId: number) {
+    return this.http.delete('${this.users_endpoint}/${userId}');
+  }
 }

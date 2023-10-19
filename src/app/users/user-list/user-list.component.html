@@ -1,5 +1,8 @@
 <div class="container">
-    <p>user-list works!</p>
+    <p>User List</p>
+    <div>
+        <button (click)="addUser()"></button>
+    </div>
     <div class="search">
         <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
