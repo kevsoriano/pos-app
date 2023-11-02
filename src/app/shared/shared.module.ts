@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PaginationComponent } from './pagination/pagination.component';
-import { FormsModule } from '@angular/forms';
-import { ModalComponent } from './modal/modal.component';
-import { AccordionComponent } from './accordion/accordion.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ModalComponent } from './components/modal/modal.component';
+import { AccordionComponent } from './components/accordion/accordion.component';
+import { AddressFormComponent } from './components/address-form/address-form.component';
 
 
 
@@ -11,16 +12,20 @@ import { AccordionComponent } from './accordion/accordion.component';
   declarations: [
     PaginationComponent,
     ModalComponent,
-    AccordionComponent
+    AccordionComponent,
+    AddressFormComponent
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     PaginationComponent,
     ModalComponent,
-    AccordionComponent
+    AccordionComponent,
+    ReactiveFormsModule,
+    AddressFormComponent
   ]
 })
 export class SharedModule { }
