@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { UserService } from '../user.service';
 import { User } from 'src/app/shared/models/user.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-list',
@@ -14,7 +15,7 @@ export class UserListComponent implements OnInit {
   totalPages = 10;
   userList: User[];
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit(): void {
     // this.userService.getUsers().subscribe(users => {
@@ -34,23 +35,20 @@ export class UserListComponent implements OnInit {
 
   onPageChanged(data: {page:number, limit: number}) {
     this.loadData(data);
-    // console.log('onPageChanged', data);
   }
 
   onPageSizeChanged(data: {page:number, limit: number}) {
     this.loadData(data);
-    // console.log('onPageSizeChanged', data);
   }
 
   loadData(data: {page:number, limit: number}) {
     this.userService.getUsersByPageAndLimit(data.page, data.limit).subscribe(response => {
       this.userList = response;
       this.totalPages = Math.ceil(response.length/data.limit);
-      console.log(this.totalPages)
     });
   }
 
   addUser() {
-
+    this.router.navigate(['/users/add']);
   }
 }

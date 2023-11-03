@@ -1,17 +1,15 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../shared/models/user.model';
+import { Role } from '../shared/models/role.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   users_endpoint = 'http://localhost:8082/users';
+  roles_endpoint = 'http://localhost:8082/roles';
   constructor(private http: HttpClient) { }
-
-  getUsers() {
-    return this.http.get<User[]>(this.users_endpoint);
-  }
 
   getUsersByPageAndLimit(page: number, limit: number) {
     let queryParams = new HttpParams();
@@ -32,5 +30,9 @@ export class UserService {
 
   deleteUser(userId: number) {
     return this.http.delete('${this.users_endpoint}/${userId}');
+  }
+
+  getRolesByPageAndLimit() {
+    return this.http.get<Role[]>(this.roles_endpoint);
   }
 }
