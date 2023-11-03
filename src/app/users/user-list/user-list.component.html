@@ -1,7 +1,7 @@
 <div class="container">
     <p>User List</p>
     <div>
-        <button (click)="addUser()"></button>
+        <button type="button" (click)="addUser()" class="btn btn-primary">Add User</button>
     </div>
     <div class="search">
         <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">

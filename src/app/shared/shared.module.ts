@@ -4,7 +4,6 @@ import { PaginationComponent } from './components/pagination/pagination.componen
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalComponent } from './components/modal/modal.component';
 import { AccordionComponent } from './components/accordion/accordion.component';
-import { AddressFormComponent } from './components/address-form/address-form.component';
 
 
 
@@ -12,8 +11,7 @@ import { AddressFormComponent } from './components/address-form/address-form.com
   declarations: [
     PaginationComponent,
     ModalComponent,
-    AccordionComponent,
-    AddressFormComponent
+    AccordionComponent
   ],
   imports: [
     CommonModule,
@@ -24,8 +22,6 @@ import { AddressFormComponent } from './components/address-form/address-form.com
     PaginationComponent,
     ModalComponent,
     AccordionComponent,
-    ReactiveFormsModule,
-    AddressFormComponent
   ]
 })
 export class SharedModule { }

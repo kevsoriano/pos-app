@@ -1,22 +1,20 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
+import { Subscription } from 'rxjs';
 import { NavService } from '../shared/nav.service';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  selector: 'app-sidebar',
+  templateUrl: './sidebar.component.html',
+  styleUrls: ['./sidebar.component.scss']
 })
-export class HeaderComponent implements OnInit, OnDestroy {
+export class SidebarComponent implements OnInit, OnDestroy {
   private userSub: Subscription;
   isAuthenticated = false;
   private appDrawerSub: Subscription;
   isAppDrawerOpen = true;
 
-  constructor(private authService: AuthService, private navService: NavService) {
-
-  }
+  constructor(private authService: AuthService, private navService: NavService) {}
 
   ngOnInit(): void {
     this.userSub = this.authService.user.subscribe(user => {
@@ -29,13 +27,5 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.userSub.unsubscribe();
-  }
-
-  onLogout() {
-    this.authService.logout();
-  }
-
-  toggleNav() {
-    this.navService.toggleNav(!this.isAppDrawerOpen);
   }
 }

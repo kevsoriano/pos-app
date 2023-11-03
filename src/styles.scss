@@ -190,3 +190,34 @@ table {
     text-align: center;
 }
 
+// sidebar
+.sidebar {
+    margin-right: 16px;
+    border-right: 1px solid black;
+    height: calc(100vh - 66px);
+    width: 0;
+    overflow-x: hidden;
+    transition: 0.4s;
+}
+
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+
+    a {
+        margin: 8px auto;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        transition: 0.5s;
+        // padding: 8px 8px 8px 32px
+
+        &:hover {
+            color: #f1f1f1;
+        }
+    }
+}
+
+.sidebar.open {
+    width: 110px;
+}
