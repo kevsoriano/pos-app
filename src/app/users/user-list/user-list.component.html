@@ -4,7 +4,7 @@
         <button type="button" (click)="addUser()" class="btn btn-primary">Add User</button>
     </div>
     <div class="search">
-        <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" name="name" id="name" formControlName="name" class="form-control">
@@ -34,6 +34,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let user of userList">
+                    <td class="left-align">{{ user.userId }}</td>
                     <td class="left-align">{{ user.firstName }}</td>
                     <td class="left-align">{{ user.lastName }}</td>
                     <td class="left-align">{{ user.email }}</td>
@@ -41,7 +42,7 @@
                     <td class="center-align">
                         <a>View</a>
                         <a>Edit</a>
-                        <button type="button">delete</button>
+                        <button type="button" (click)="onDelete(user.userId)">delete</button>
                     </td>
                 </tr>
             </tbody>

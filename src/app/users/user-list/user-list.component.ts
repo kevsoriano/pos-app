@@ -29,8 +29,14 @@ export class UserListComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+  onSearch() {
 
+  }
+
+  onDelete(userId: string) {
+    this.userService.deleteUser(userId).subscribe(response => {
+      this.loadData({page: this.currentPage, limit: 10});
+    });
   }
 
   onPageChanged(data: {page:number, limit: number}) {

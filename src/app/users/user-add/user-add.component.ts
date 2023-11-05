@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormArray } from '@angular/forms';
 import { UserService } from '../user.service';
 import { Role } from 'src/app/shared/models/role.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-add',
@@ -10,6 +11,7 @@ import { Role } from 'src/app/shared/models/role.model';
 })
 export class UserAddComponent implements OnInit {
   roleList: Role[];
+  roleListNames: string[];
 
   form: FormGroup = new FormGroup({
     firstName: new FormControl(''),
@@ -25,16 +27,7 @@ export class UserAddComponent implements OnInit {
         type: new FormControl('')
       })
     ]),
-    roles: new FormArray([
-      new FormGroup({
-        name: new FormControl(''),
-        authorities: new FormArray([
-          new FormGroup({
-            name: new FormControl('')
-          })
-        ])
-      })
-    ]),
+    roles: new FormArray([]),
   });
 
   get addresses() {
@@ -45,9 +38,7 @@ export class UserAddComponent implements OnInit {
     return (this.form.get('roles') as FormArray).controls;
   }
 
-  constructor(private userService: UserService) {
-
-  }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
     this.loadData();
@@ -60,7 +51,11 @@ export class UserAddComponent implements OnInit {
   }
 
   onSubmit() {
-    throw new Error('Method not implemented.');
+    this.userService.createUser(this.form.value).subscribe()
+  }
+
+  onCancel() {
+    this.router.navigateByUrl('/users')
   }
 
   changeType($event: Event) {
@@ -68,11 +63,26 @@ export class UserAddComponent implements OnInit {
   }
 
   changeRole($event: Event) {
-    throw new Error('Method not implemented.');
-  }
-
-  updateRoles($event: Event) {
-    // TODO: Dynamically add form groups/controls as user selects roles from list of checkboxes
-    throw new Error('Method not implemented.');
+    const roleName = ($event.target as HTMLSelectElement).value
+    const role = this.roleList.find(role => {
+      return role.name === roleName;
+    });
+    const roleForm = new FormGroup({
+      name: new FormControl(role?.name),
+      authorities: new FormArray([])
+    });
+    const authorities = roleForm.get('authorities') as FormArray;
+    role?.authorities.forEach(authority => {
+      authorities.push(new FormGroup({
+        name: new FormControl(authority.name)
+      }));
+    });
+    
+    if((this.form.get('roles') as FormArray).length === 0) {
+      (this.form.get('roles') as FormArray).push(roleForm);
+    } else {
+      (this.form.get('roles') as FormArray).removeAt(0);
+      (this.form.get('roles') as FormArray).push(roleForm);
+    }
   }
 }

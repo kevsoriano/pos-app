@@ -28,8 +28,8 @@ export class UserService {
     return this.http.put('${this.users_endpoint}/${userId}', userDetails);
   }
 
-  deleteUser(userId: number) {
-    return this.http.delete('${this.users_endpoint}/${userId}');
+  deleteUser(userId: string) {
+    return this.http.delete(this.users_endpoint + "/" + userId);
   }
 
   getRolesByPageAndLimit() {
