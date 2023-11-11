@@ -20,12 +20,16 @@ export class UserService {
     })
   }
 
+  getUser(userId: string) {
+    return this.http.get<User>(this.users_endpoint + "/" + userId);
+  }
+
   createUser(userDetails: User) {
     return this.http.post(this.users_endpoint, userDetails);
   }
 
   updateUser(userId: number, userDetails: User) {
-    return this.http.put('${this.users_endpoint}/${userId}', userDetails);
+    return this.http.put(this.users_endpoint + "/" + userId, userDetails);
   }
 
   deleteUser(userId: string) {

@@ -40,8 +40,7 @@
                     <td class="left-align">{{ user.email }}</td>
                     <!-- <td>{{ user.addresses[1].city }}</td> -->
                     <td class="center-align">
-                        <a>View</a>
-                        <a>Edit</a>
+                        <a routerLink="/users/{{user.userId}}">Edit</a> | 
                         <button type="button" (click)="onDelete(user.userId)">delete</button>
                     </td>
                 </tr>
