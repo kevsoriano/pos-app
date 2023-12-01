@@ -1,3 +1,3 @@
-export class Authority {
-    constructor(public name: string) {}
+export interface Authority {
+    name: string
 }

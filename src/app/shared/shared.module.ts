@@ -4,6 +4,7 @@ import { PaginationComponent } from './components/pagination/pagination.componen
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalComponent } from './components/modal/modal.component';
 import { AccordionComponent } from './components/accordion/accordion.component';
+import { ChipsComponent } from './components/chips/chips.component';
 
 
 
@@ -11,7 +12,8 @@ import { AccordionComponent } from './components/accordion/accordion.component';
   declarations: [
     PaginationComponent,
     ModalComponent,
-    AccordionComponent
+    AccordionComponent,
+    ChipsComponent
   ],
   imports: [
     CommonModule,
@@ -22,6 +24,7 @@ import { AccordionComponent } from './components/accordion/accordion.component';
     PaginationComponent,
     ModalComponent,
     AccordionComponent,
+    ChipsComponent
   ]
 })
 export class SharedModule { }

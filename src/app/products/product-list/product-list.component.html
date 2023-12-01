@@ -1,0 +1,24 @@
+<div class="container">
+    <p>Product List</p>
+    <div>
+        <button type="button" (click)="addProduct()" class="btn btn-primary">Add Product</button>
+    </div>
+    <div class="table">
+        <table>
+            <thead>
+                <tr class="center-align">
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of productList">
+                    <td class="left-align">{{ product.name }}</td>
+                    <td class="center-align">
+                        <a routerLink="/users/{{product.id}}">Edit</a> | 
+                        <button type="button" (click)="onDelete(product.id)">delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
