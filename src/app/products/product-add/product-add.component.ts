@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./product-add.component.scss']
 })
 export class ProductAddComponent {
+
   items = ['angular', 'chip', 'tutorial'];
   form = new FormGroup({
     name: new FormControl(''),
@@ -17,11 +18,23 @@ export class ProductAddComponent {
 
   constructor(private productService: ProductService, private router: Router) {}
 
+  get productVariants() {
+    return (this.form.get('productVariants') as FormArray).controls;
+  }
+
   onSubmit() {
     throw new Error('Method not implemented.');
   }
 
   onCancel() {
     this.router.navigateByUrl('/users')
+  }
+
+  addProductAttributes() {
+    const productAttribute = new FormGroup({
+      attributeType: new FormControl(''),
+      attributeValue: new FormControl('')
+    });
+    // this.productVariants.push(productVariant);
   }
 }

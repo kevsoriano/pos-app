@@ -20,8 +20,16 @@
                     <span></span>
                 </div>
             </div>
-
         </div> -->
+        <div>
+            <h3>Product Variants</h3>
+            <button type="button" (click)="addProductAttributes()" class="btn">Add Product Attribute</button>
+        </div>
+        <app-chips 
+            [items]="items"
+            [removable]="true"
+            [placeholder]="'Enter an item..'"
+        ></app-chips>
         <div>
             <button type="submit" class="btn btn-primary">Add</button> | 
             <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
