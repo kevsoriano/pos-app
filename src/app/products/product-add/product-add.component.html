@@ -23,6 +23,9 @@
         </div> -->
         <div>
             <h3>Product Variants</h3>
+            <div>
+                <p *ngFor="let attribute of attributesArray">new attribute</p>
+            </div>
             <button type="button" (click)="addProductAttributes()" class="btn">Add Product Attribute</button>
         </div>
         <app-chips 
