@@ -23,8 +23,16 @@
         </div> -->
         <div>
             <h3>Product Variants</h3>
-            <div>
-                <p *ngFor="let attribute of attributesArray">new attribute</p>
+            <div *ngFor="let attribute of attributesArray; let i = index" styl>
+                <p>Attribute {{ i+1 }}</p>
+                <div style="display: flex;">
+                    <div style="margin: 0 16px 16px 0;">
+                        <input type="text" name="attributeType" id="attributeType">
+                    </div>
+                    <div>
+                        <input #inputField type="text" name="attributeValue" id="attributeValue" (keydown)="onKeyDown($event, inputField.value)">
+                    </div>
+                </div>
             </div>
             <button type="button" (click)="addProductAttributes()" class="btn">Add Product Attribute</button>
         </div>

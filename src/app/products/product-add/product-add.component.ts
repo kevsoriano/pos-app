@@ -32,16 +32,35 @@ export class ProductAddComponent {
   }
 
   addProductAttributes() {
-    // const attribute = new FormGroup({
-    //   attributeType: new FormControl(''),
-    //   attributeValue: new FormControl('')
-    // });
-    // this.productVariants.push(productVariant);
     const attribute = {
       attributeType: "",
       attributeValues: [""]
     };
     this.attributesArray.push(attribute);
     console.log(this.attributesArray);
+  }
+
+  onKeyDown($event: KeyboardEvent, value: string) {
+    console.log(value);
+    switch($event.keyCode) {
+      case 13:
+        if(value && value.trim() !== '') {
+          if(!this.attributesArray.['attributeValues'].includes(value)) {
+            this.attributesArray.push(value);
+            // this.triggerChange();
+          }
+          this.inputField.nativeElement.value = '';
+          $event.preventDefault();
+        }
+        break;
+      case 8: {
+        if(!value && this.items.length > 0) {
+          this.attributesArray.pop();
+        }
+        break;
+      }
+      default:
+        break;
+    }
   }
 }
