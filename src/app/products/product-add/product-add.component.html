@@ -6,41 +6,62 @@
             <input type="text" name="name" id="name" formControlName="name" class="form-control">
             <span></span>
         </div>
-        <!-- <div>
-            <h3>Product Variants</h3>
-            <div style="display: flex;">
-                <div class="form-group">
-                    <label for="attribute">Attribute</label>
-                    <input type="text" name="attribute" id="attribute" formControlName="attribute" class="form-control">
-                    <span></span>
-                </div>
-                <div class="form-group">
-                    <label for="value">Value</label>
-                    <input type="" name="value" id="value" formControlName="value" class="form-control">
-                    <span></span>
-                </div>
-            </div>
-        </div> -->
         <div>
             <h3>Product Variants</h3>
-            <div *ngFor="let attribute of attributesArray; let i = index" styl>
-                <p>Attribute {{ i+1 }}</p>
-                <div style="display: flex;">
-                    <div style="margin: 0 16px 16px 0;">
-                        <input #attributeTypeField type="text" >
+            <div *ngFor="let attribute of attributesArray; let i = index" style="display: flex;">
+                <div>
+                    <h4>Attribute Type</h4>
+                    <input #attributeTypeField type="text" (keydown)="onAttributeTypeKeyDown($event, i, attributeTypeField.value)">
+                </div>
+                <div class="chip-container" >
+                    <h4>Attribute Values</h4>
+                    <div class="input-container">
+                        <ul class="chip-bar">
+                            <li class="chip" *ngFor="let item of getAttributeValues(i); let j = index">
+                                <span class="chip-label">{{item}}</span>
+                                <span *ngIf="removable" class="material-icons md-18 remove" (click)="removeItem(i,j)">clear</span>
+                            </li>
+                            <li class="input-field">
+                                <input 
+                                    #attributeValueField
+                                    type="text" 
+                                    name="" 
+                                    id="" 
+                                    class="input"
+                                    autocomplete="off"
+                                    [placeholder]="placeholder"
+                                    (keydown)="onAttributeValueKeyDown($event, i, attributeValueField.value)"
+                                >
+                            </li>
+                        </ul>
                     </div>
-                    <div>
-                        <input #attributeValueField type="text"  (keydown)="onKeyDown($event, i, attributeTypeField.value, attributeValueField.value)">
+                    <div class="chip-footer">
+                        <span>Enter a comma or press "Enter" after each tag</span>
                     </div>
                 </div>
             </div>
             <button type="button" (click)="addProductAttributes()" class="btn">Add Product Attribute</button>
         </div>
-        <app-chips 
+        <!-- <div>
+            <h3>Product Variants</h3>
+            <div *ngFor="let attribute of attributesArray; let i = index" >
+                <p>Attribute {{ i+1 }}</p>
+                <div style="display: flex;">
+                    <div style="margin: 0 16px 16px 0;">
+                        <input #attributeTypeField type="text" (keydown)="onAttributeTypeKeyDown($event, i, attributeTypeField.value)">
+                    </div>
+                    <div>
+                        <input #attributeValueField type="text"  (keydown)="onAttributeValueKeyDown($event, i, attributeValueField.value)">
+                    </div>
+                </div>
+            </div>
+            <button type="button" (click)="addProductAttributes()" class="btn">Add Product Attribute</button>
+        </div> -->
+        <!-- <app-chips 
             [items]="items"
             [removable]="true"
             [placeholder]="'Enter an item..'"
-        ></app-chips>
+        ></app-chips> -->
         <div>
             <button type="submit" class="btn btn-primary">Add</button> | 
             <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
