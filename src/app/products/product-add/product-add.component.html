@@ -27,10 +27,10 @@
                 <p>Attribute {{ i+1 }}</p>
                 <div style="display: flex;">
                     <div style="margin: 0 16px 16px 0;">
-                        <input type="text" name="attributeType" id="attributeType">
+                        <input #attributeTypeField type="text" >
                     </div>
                     <div>
-                        <input #inputField type="text" name="attributeValue" id="attributeValue" (keydown)="onKeyDown($event, inputField.value)">
+                        <input #attributeValueField type="text"  (keydown)="onKeyDown($event, i, attributeTypeField.value, attributeValueField.value)">
                     </div>
                 </div>
             </div>

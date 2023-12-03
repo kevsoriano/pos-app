@@ -34,31 +34,31 @@ export class ProductAddComponent {
   addProductAttributes() {
     const attribute = {
       attributeType: "",
-      attributeValues: [""]
+      attributeValues: []
     };
     this.attributesArray.push(attribute);
     console.log(this.attributesArray);
   }
 
-  onKeyDown($event: KeyboardEvent, value: string) {
-    console.log(value);
+  onKeyDown($event: KeyboardEvent, index: number, attributeType: string, attributeValue: string) {
+    console.log(attributeValue);
     switch($event.keyCode) {
       case 13:
-        if(value && value.trim() !== '') {
-          if(!this.attributesArray.['attributeValues'].includes(value)) {
-            this.attributesArray.push(value);
-            // this.triggerChange();
+        if(attributeValue && attributeValue.trim() !== '') {
+          if(!this.attributesArray[index].attributeValues.includes(attributeValue)) {
+            this.attributesArray[index].attributeValues.push(attributeValue);
           }
-          this.inputField.nativeElement.value = '';
+          // this.inputField.nativeElement.value = '';
+          console.log(this.attributesArray)
           $event.preventDefault();
         }
         break;
-      case 8: {
-        if(!value && this.items.length > 0) {
-          this.attributesArray.pop();
-        }
-        break;
-      }
+      // case 8: {
+      //   if(!value && this.items.length > 0) {
+      //     this.attributesArray.pop();
+      //   }
+      //   break;
+      // }
       default:
         break;
     }
