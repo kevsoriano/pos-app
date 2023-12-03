@@ -2,12 +2,17 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { authGuard } from './auth/auth.guard';
 import { HomeComponent } from './home/home.component';
+import { ScratchComponent } from './scratch/scratch.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full'},
+  { path: '', redirectTo: '/scratch', pathMatch: 'full'},
   {
     path: 'account',
     component: HomeComponent
+  },
+  {
+    path: 'scratch',
+    component: ScratchComponent
   },
   { 
     path: 'account', 

@@ -10,13 +10,15 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
+import { ScratchComponent } from './scratch/scratch.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    SidebarComponent
+    SidebarComponent,
+    ScratchComponent
   ],
   imports: [
     BrowserModule,
