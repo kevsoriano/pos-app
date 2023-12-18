@@ -19,6 +19,7 @@ export class ProductAddComponent {
     productVariants: new FormArray([])
   });
   @ViewChild('attributeValueField') attributeValueField: any;
+  isNavOpen: boolean = false;
 
   constructor(private productService: ProductService, private router: Router) {}
 
@@ -104,5 +105,9 @@ export class ProductAddComponent {
 
   addAttribute() {
     console.log("hello");
+  }
+
+  toggleNav() {
+    this.isNavOpen = !this.isNavOpen;
   }
 }

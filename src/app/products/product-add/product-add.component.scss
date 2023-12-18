@@ -90,13 +90,6 @@
             // justify-content: space-between;
         }
 
-        .dropdown {
-            .dropdown-item {
-
-                a {
-                }
-            }
-        }
     }
 }
 
@@ -115,5 +108,88 @@
         background-color: #bec2c4;
         background-size: 100%;
         transition: background 0s;
+    }
+}
+
+#nav {
+    width: 100%;
+    top: 90px;
+    left: 0;
+    z-index: 3;
+    height: 45px;
+    line-height: 45px;
+    vertical-align: middle;
+    display: inline-block;
+    font-size: 0.1px;
+    font-weight: 300;
+    font-style: normal;
+    cursor: pointer;
+    padding: 0;
+    cursor: pointer;
+    transition: opacity .25s ease-in-out;
+    -moz-transition: opacity .25s ease-in-out;
+    -webkit-transition: opacity .25s ease-in-out;
+
+    .dropdown {
+        height:45px;
+        padding: 0 10px;
+        text-align: left;  
+        border: 1px solid #33383B;
+        background: #fafafa;
+        border-radius: 3px;
+        
+        .dropdown-item {
+            display: block;
+            position: relative;
+            &:first-child:before {
+                  position: absolute;
+                  content: ' Menu ';
+                  position: relative;
+                  font-size: 1.6rem;
+                  font-size: 16px;
+                  font-weight: 600;
+                  text-transform: uppercase;
+            }
+            &:first-child:after {
+                position: absolute;
+                top: 0;
+                right: 0;
+                font-family: FontAwesome;
+                font-size: 12px;
+                font-size: 1.2rem;
+                content: "\f0d7";
+                color: #2267B9;
+                padding-right: 10px;
+            }
+        }
+    }
+    & a {
+        display: none;
+        font-size: 1.5rem;
+        font-size: 15px;
+        text-decoration: none;
+        text-transform: uppercase;
+        color: #4A5564;
+    }
+}
+
+/* styles for the dropdown open */
+#nav.nav-is-visible .dropdown {
+    height: initial;
+    background: #F1F1F1;
+    & .dropdown-item {
+      &:first-child:after {
+        content: "\f00d";
+      }
+      & a {
+        display: block;
+        border-bottom: 2px solid #F1F1F1;
+        &:hover {
+          border-bottom: 2px solid #4A5564;
+        }
+      }
+      &:last-child {
+        margin-bottom: 10px;
+      }
     }
 }
