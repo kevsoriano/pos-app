@@ -9,7 +9,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./product-add.component.scss']
 })
 export class ProductAddComponent {
+
   attributesArray: Array<{attributeType: string, attributeValues: Array<string>}> = [];
+  // productVariantsArray: Array<{}>;
   placeholder: string = 'Enter an attribute value';
   removable = true;
   form = new FormGroup({
@@ -29,7 +31,7 @@ export class ProductAddComponent {
   }
 
   onSubmit() {
-    throw new Error('Method not implemented.');
+    console.log("submit")
   }
 
   onCancel() {
@@ -82,12 +84,25 @@ export class ProductAddComponent {
   }
 
   createProductVariants() {
+    let productName = '';
     this.attributesArray.forEach((attribute)=> {
-      console.log(attribute.attributeType);
+      attribute.attributeValues.forEach((attributeValue) => {
+
+      });
+      // productName += attribute.attributeType + "\/";
+
+      // const productVariant = new FormGroup({
+      //   name: new FormControl(productName)
+      // });
+      // this.productVariants.push(productVariant);
     });
   }
 
   removeItem(index: number, position: number) {
     this.attributesArray[index].attributeValues.splice(position, 1);
+  }
+
+  addAttribute() {
+    console.log("hello");
   }
 }
