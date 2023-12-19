@@ -8,10 +8,8 @@ import { HeaderComponent } from './header/header.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { FormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 import { ScratchComponent } from './scratch/scratch.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -25,7 +23,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FontAwesomeModule
+    SharedModule
   ],
   providers: [
     {

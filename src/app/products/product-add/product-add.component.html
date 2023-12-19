@@ -7,17 +7,6 @@
             <span></span>
         </div>
         <div>
-            <h3>test</h3>
-            <nav id="nav" [class.nav-is-visible]="isNavOpen" (click)="toggleNav()">
-                <ul class="dropdown">
-                    <li class="dropdown-item"><a href="#">Size</a></li>
-                    <li class="dropdown-item"><a href="#">Color</a></li>
-                    <li class="dropdown-item"><a href="#">Material</a></li>
-                    <li class="dropdown-item"><a (click)="addAttribute()" >Add Attribute</a></li>
-                </ul>
-            </nav>
-        </div>
-        <div>
             <h3>Product Variants</h3>
             <div *ngFor="let attribute of attributesArray; let i = index" style="display: flex;">
                 <div>

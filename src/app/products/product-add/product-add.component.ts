@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { ProductService } from '../product.service';
 import { Router } from '@angular/router';
+import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
 
 @Component({
   selector: 'app-product-add',
@@ -9,9 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./product-add.component.scss']
 })
 export class ProductAddComponent {
-
   attributesArray: Array<{attributeType: string, attributeValues: Array<string>}> = [];
-  // productVariantsArray: Array<{}>;
   placeholder: string = 'Enter an attribute value';
   removable = true;
   form = new FormGroup({
@@ -19,7 +18,7 @@ export class ProductAddComponent {
     productVariants: new FormArray([])
   });
   @ViewChild('attributeValueField') attributeValueField: any;
-  isNavOpen: boolean = false;
+  
 
   constructor(private productService: ProductService, private router: Router) {}
 
@@ -52,7 +51,6 @@ export class ProductAddComponent {
       case 13:
         if(attributeType && attributeType.trim() !== '') {
           this.attributesArray[index].attributeType = attributeType;
-          console.log(this.attributesArray)
           $event.preventDefault();
         }
         break;
@@ -70,6 +68,7 @@ export class ProductAddComponent {
             this.createProductVariants();
           }
           this.attributeValueField.nativeElement.value = '';
+          this.generateProductVariants();
           $event.preventDefault();
         }
         break;
@@ -103,11 +102,8 @@ export class ProductAddComponent {
     this.attributesArray[index].attributeValues.splice(position, 1);
   }
 
-  addAttribute() {
-    console.log("hello");
-  }
-
-  toggleNav() {
-    this.isNavOpen = !this.isNavOpen;
+  generateProductVariants() {
+    console.log(this.attributesArray);
   }
 }
+

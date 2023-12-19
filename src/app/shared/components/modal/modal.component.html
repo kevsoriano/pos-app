@@ -1,19 +1,17 @@
 <div class="modal" (click)="onCloseModal()">
-    <div (click)="$event.stopPropagation()">
+    <div (click)="$event.stopPropagation()" class="modal-content">
         <i class="close icon" (click)="onCloseModal()"></i>
-        <div class="modal-content">
-            <div class="header">
-                <ng-content select="[modalTitle]"></ng-content>
-            </div>
-            <div class="body">
-                <ng-content></ng-content>
-            </div>
-            <div class="actions">
-                <ng-content select="[modalFooter]"></ng-content>
-            </div>
-            <div class="actions actions-default">
-                <button class="button" (click)="onCloseModal()">OK</button>
-            </div>
+        <div class="header">
+            <ng-content select="[modalTitle]"></ng-content>
+        </div>
+        <div class="body">
+            <ng-content></ng-content>
+        </div>
+        <div class="actions">
+            <ng-content select="[modalFooter]"></ng-content>
+        </div>
+        <div class="actions actions-default">
+            <button class="button" (click)="onCloseModal()">OK</button>
         </div>
     </div>
 </div>

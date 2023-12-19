@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./scratch.component.scss']
 })
 export class ScratchComponent implements OnInit {
+  isNavOpen: boolean = false;
+  isModalOpen: boolean = false;
   productAttributes = [
     {
       attributeType: 'color',
@@ -33,14 +35,26 @@ export class ScratchComponent implements OnInit {
         tempArr.push(this.productAttributes[i].attributeValues[j]);
       }
       if(arr.length == 0) {
-        arr=tempArr
-        console.log("0");
-        console.log(arr)
+        arr = tempArr.slice();
+        console.log(arr);
+        tempArr = [];
       } else {
-        console.log(">1");
-        console.log(arr)
+        // arr = tempArr.slice();
+        console.log(tempArr);
+        tempArr = [];
       }
-      // tempArr = [];
     }
+  }
+
+  toggleNav() {
+    this.isNavOpen = !this.isNavOpen;
+  }
+
+  addAttribute() {
+    console.log("hello");
+  }
+
+  toggleModal() {
+    this.isModalOpen = !this.isModalOpen;
   }
 }
