@@ -29,21 +29,27 @@ export class ScratchComponent implements OnInit {
 
   loadData() {
     let arr: string | any[] = [];
-    let tempArr = [];
+    let tempArr: string[] = [];
     for(let i = 0;i<this.productAttributes.length;i++) {
       for(let j = 0;j<this.productAttributes[i].attributeValues.length;j++) {
         tempArr.push(this.productAttributes[i].attributeValues[j]);
       }
       if(arr.length == 0) {
         arr = tempArr.slice();
-        console.log(arr);
         tempArr = [];
       } else {
-        // arr = tempArr.slice();
-        console.log(tempArr);
+        let temp: string[] = []
+        arr.forEach((attributeValue) => {
+          tempArr.forEach((value) => {
+            temp.push(attributeValue + "/" + value)
+          });
+        })
+        arr = temp.slice();
+        temp =[]
         tempArr = [];
       }
     }
+    console.log(arr);
   }
 
   toggleNav() {
